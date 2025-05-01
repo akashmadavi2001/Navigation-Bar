@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.container {
+    padding: 10px;
+    background-color: #666;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.tab {
+    display: flex;
+    position: relative;
+}
+
+.tab::after {
+    position: absolute;
+    content: '';
+    width: calc((100%/5) - 5px);
+    height: 45px;
+    left: calc(var(--active) * 100%/5 + 2px);
+    top: -40px;
+    border-radius: 50%;
+    transition: 0.5s;
+    background-color: #666;
+    z-index: 2;
+    box-shadow: 0 0 0 4px black, 0 2px 0 3px #ffffff90;
+}
+
+.tab input {
+    display: none;
+}
+
+.tab label {
+    position: relative;
+    width: 50px;
+    height: 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.5s;
+}
+
+.tab label h6 {
+    position: absolute;
+    font-weight: 300;
+    bottom: -8px;
+    left: 50%;
+    transform: translate(-50%) scale(0);
+    transition: 0.5s;
+}
+
+.tab input:checked+label h6 {
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: white;
+    transform: translate(-50%) scale(1);
+}
+
+.tab i {
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    transition: 0.5s;
+}
+
+.tab label:hover i {
+    color: white;
+}
+
+.tab input:checked+label i {
+    color: white;
+    top: -25px;
+}
+
+.tab:has(:checked:nth-of-type(1)) {
+    --active: 0;
+}
+
+.tab:has(:checked:nth-of-type(2)) {
+    --active: 1;
+}
+
+.tab:has(:checked:nth-of-type(3)) {
+    --active: 2;
+}
+
+.tab:has(:checked:nth-of-type(4)) {
+    --active: 3;
+}
+
+.tab:has(:checked:nth-of-type(5)) {
+    --active: 4;
+}
